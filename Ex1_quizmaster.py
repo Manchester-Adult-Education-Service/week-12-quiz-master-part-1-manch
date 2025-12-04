@@ -45,7 +45,11 @@ import json # This will be used in Task 6 and Extension 3
 # 4. Print the current 'player_score' using an f-string: "Your current score is 0."
 #
 # Write your code below:
-
+player_score = "0"
+max_score ="10"
+player = "json"
+print("Welcome to The Ultimate Python Quiz!")
+print(f"{player} Your current score is 0")
 
 
 
@@ -79,7 +83,7 @@ import json # This will be used in Task 6 and Extension 3
 # HINT: You will need to use the **'int()'** function to convert the input from text to a number.
 #
 # Write your code below:
-
+print("--- Testing Basic Functions ---")
 
 
 
