@@ -84,6 +84,12 @@ print(f"{player} Your current score is 0")
 #
 # Write your code below:
 print("--- Testing Basic Functions ---")
+answer1 = int(input("Q1: What is 7 * 5?\n"))
+if answer1 == 35:
+    print("Correct!")
+    player_score += 1
+else:
+    print("Incorrect. The answer was 35.")
 
 
 
