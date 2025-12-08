@@ -46,7 +46,7 @@ import json # This will be used in Task 6 and Extension 3
 #
 # Write your code below:
 player_score = 0
-max_score ="10"
+max_score = 10
 player = "json"
 print("Welcome to The Ultimate Python Quiz!")
 print(f"{player} Your current score is 0")
@@ -228,9 +228,39 @@ quiz_questions = [
 # 4. **Comment out** the line that calls the function for now, as we will use it in Task 7.
 #
 # Write your code below:
-
-
-
+def run_quiz(questions):
+    player_score, max_score
+    player_score = 0
+    max_score = len(questions)
+    if max_score == 0:
+        print("No question to run the quiez")
+        return
+    for q in questions:
+        user_answer = None
+        while user_answer is None:
+            prompt = f"Q{i+1}: {q['question']} "
+            user_answer = input(prompt)
+            try:
+                if q['type'] == 'int':
+                    user_answer = int(user_input)
+                elif q['type'] == 'str':
+                    user_answer = user_input.upper()
+            except valueError:
+                print("Error please enter a whole number.")
+                user_answer = None
+        if user_answer == q['answer']:
+            print("Correct")
+            player_score += 1
+        else:
+            print(f"Incorrect the answer was {q['answer']}.")
+    print("-" *20)
+    if max_score > 0:
+        percentage = (player_score / max_score) * 100
+        print(f"Final Score: {player_score}/{max_score} ({percentage:.0f}%)")
+        if percentage >= 80:
+            print("Excellent job.")
+        else:
+            print("Keep practising!")
 
 # -------------------------------------------
 # CHECKPOINT
