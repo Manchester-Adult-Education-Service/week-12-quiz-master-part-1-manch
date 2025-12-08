@@ -45,7 +45,7 @@ import json # This will be used in Task 6 and Extension 3
 # 4. Print the current 'player_score' using an f-string: "Your current score is 0."
 #
 # Write your code below:
-player_score = "0"
+player_score = 0
 max_score ="10"
 player = "json"
 print("Welcome to The Ultimate Python Quiz!")
@@ -124,7 +124,13 @@ else:
 #
 # Write your code below:
 
-
+answer2 = input("Q2: Which conditional keyword means 'otherwise, if'?").lower()
+if answer2 == "elif":
+    print("You got it!")
+    player_score += 1
+else:
+    print("Not quite. It was ELIF.")
+print("--- End of Basic Test ---\n")
 
 
 # -------------------------------------------
