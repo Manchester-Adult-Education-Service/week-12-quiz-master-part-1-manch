@@ -177,7 +177,23 @@ print("--- End of Basic Test ---\n")
 # ]
 #
 # Write your code below:
-
+quiz_questions = [
+    {
+        'question': 'What is the capital of France?',
+        'answer': 'Paris',
+        'type': 'str',
+    },
+    {
+        'question': 'What is 20 * 10?',
+        'answer': 200,
+        'type': 'int',
+    },
+    {
+        'question': 'What is the national language of pakistan?',
+        'answer': 'Urde',
+        'type': 'str',
+    }
+]
 
 
 
