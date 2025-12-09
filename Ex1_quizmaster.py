@@ -1,3 +1,4 @@
+import json
 # -------------------------------------------
 # Exercise 1: The Ultimate Quiz Master
 # -------------------------------------------
@@ -177,23 +178,14 @@ print("--- End of Basic Test ---\n")
 # ]
 #
 # Write your code below:
-quiz_questions = [
-    {
-        'question': 'What is the capital of France?',
-        'answer': 'Paris',
-        'type': 'str',
-    },
-    {
-        'question': 'What is 20 * 10?',
-        'answer': 200,
-        'type': 'int',
-    },
-    {
-        'question': 'What is the national language of pakistan?',
-        'answer': 'Urde',
-        'type': 'str',
-    }
-]
+
+# try:
+#     with open('quiz.json', 'r') as file:
+#         quiz_questions = json.load(file)
+#     print("Quiz questions loaded from 'quiz.json'.")
+# except FileNotFoundError:
+#     print("\nError: 'quiz.json' not found. Cannot load quiz questions.")
+#     quiz_questions = []
 
 
 
@@ -300,7 +292,13 @@ def run_quiz(questions):
 #
 # (Modify the code below)
 # Write your code below:
-
+try:
+    with open('quiz.json', 'r') as file:
+        quiz_questions = json.load(file)
+    print("Quiz questions loaded from 'quiz.json'.")
+except FileNotFoundError:
+    print("\nError: 'quiz.json' not found. Cannot load quiz questions.")
+    quiz_questions = []
 
 
 
@@ -337,7 +335,26 @@ def run_quiz(questions):
 #
 # (Modify the code below)
 # Write your code below:
-
+take_quiz = "Y":
+print(""\n--- Quiz Program Ready ---"")
+while take_quiz == "Y":
+    action = inpt("Type 'play', 'add' (Extension 3) or 'exit': ").lower()
+    if action == "play":
+        run_quiz(quiz_questions)
+    elif action == "add":
+        print("\n--- ADD NEW QUESTION ---")
+        new_q = {}
+        new_q['question'] = input("Enter the new question text: ")
+        if new_q['type'] == 'int':
+            while True:
+                try:
+                    new_q['answer'] = int(input("Enter the correct numerical answer: "))
+                    break
+                except ValueError:
+                    print("Please enter a valid whole number.")
+        else:
+            new_q['answer'] = input("Enter the correct text answer: ").upper()
+        quiz_questions.append(new_q)
 
 
 
