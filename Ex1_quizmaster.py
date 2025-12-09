@@ -1,3 +1,4 @@
+import json
 # -------------------------------------------
 # Exercise 1: The Ultimate Quiz Master
 # -------------------------------------------
@@ -45,7 +46,11 @@ import json # This will be used in Task 6 and Extension 3
 # 4. Print the current 'player_score' using an f-string: "Your current score is 0."
 #
 # Write your code below:
-
+player_score = 0
+max_score = 10
+player = "json"
+print("Welcome to The Ultimate Python Quiz!")
+print(f"{player} Your current score is 0")
 
 
 
@@ -79,7 +84,13 @@ import json # This will be used in Task 6 and Extension 3
 # HINT: You will need to use the **'int()'** function to convert the input from text to a number.
 #
 # Write your code below:
-
+print("--- Testing Basic Functions ---")
+answer1 = int(input("Q1: What is 7 * 5?\n"))
+if answer1 == 35:
+    print("Correct!")
+    player_score += 1
+else:
+    print("Incorrect. The answer was 35.")
 
 
 
@@ -114,7 +125,13 @@ import json # This will be used in Task 6 and Extension 3
 #
 # Write your code below:
 
-
+answer2 = input("Q2: Which conditional keyword means 'otherwise, if'?").lower()
+if answer2 == "elif":
+    print("You got it!")
+    player_score += 1
+else:
+    print("Not quite. It was ELIF.")
+print("--- End of Basic Test ---\n")
 
 
 # -------------------------------------------
@@ -162,6 +179,13 @@ import json # This will be used in Task 6 and Extension 3
 #
 # Write your code below:
 
+# try:
+#     with open('quiz.json', 'r') as file:
+#         quiz_questions = json.load(file)
+#     print("Quiz questions loaded from 'quiz.json'.")
+# except FileNotFoundError:
+#     print("\nError: 'quiz.json' not found. Cannot load quiz questions.")
+#     quiz_questions = []
 
 
 
@@ -196,9 +220,39 @@ import json # This will be used in Task 6 and Extension 3
 # 4. **Comment out** the line that calls the function for now, as we will use it in Task 7.
 #
 # Write your code below:
-
-
-
+def run_quiz(questions):
+    player_score, max_score
+    player_score = 0
+    max_score = len(questions)
+    if max_score == 0:
+        print("No question to run the quiez")
+        return
+    for q in questions:
+        user_answer = None
+        while user_answer is None:
+            prompt = f"Q{i+1}: {q['question']} "
+            user_answer = input(prompt)
+            try:
+                if q['type'] == 'int':
+                    user_answer = int(user_input)
+                elif q['type'] == 'str':
+                    user_answer = user_input.upper()
+            except valueError:
+                print("Error please enter a whole number.")
+                user_answer = None
+        if user_answer == q['answer']:
+            print("Correct")
+            player_score += 1
+        else:
+            print(f"Incorrect the answer was {q['answer']}.")
+    print("-" *20)
+    if max_score > 0:
+        percentage = (player_score / max_score) * 100
+        print(f"Final Score: {player_score}/{max_score} ({percentage:.0f}%)")
+        if percentage >= 80:
+            print("Excellent job.")
+        else:
+            print("Keep practising!")
 
 # -------------------------------------------
 # CHECKPOINT
@@ -238,7 +292,13 @@ import json # This will be used in Task 6 and Extension 3
 #
 # (Modify the code below)
 # Write your code below:
-
+try:
+    with open('quiz.json', 'r') as file:
+        quiz_questions = json.load(file)
+    print("Quiz questions loaded from 'quiz.json'.")
+except FileNotFoundError:
+    print("\nError: 'quiz.json' not found. Cannot load quiz questions.")
+    quiz_questions = []
 
 
 
@@ -275,7 +335,26 @@ import json # This will be used in Task 6 and Extension 3
 #
 # (Modify the code below)
 # Write your code below:
-
+take_quiz = "Y":
+print(""\n--- Quiz Program Ready ---"")
+while take_quiz == "Y":
+    action = inpt("Type 'play', 'add' (Extension 3) or 'exit': ").lower()
+    if action == "play":
+        run_quiz(quiz_questions)
+    elif action == "add":
+        print("\n--- ADD NEW QUESTION ---")
+        new_q = {}
+        new_q['question'] = input("Enter the new question text: ")
+        if new_q['type'] == 'int':
+            while True:
+                try:
+                    new_q['answer'] = int(input("Enter the correct numerical answer: "))
+                    break
+                except ValueError:
+                    print("Please enter a valid whole number.")
+        else:
+            new_q['answer'] = input("Enter the correct text answer: ").upper()
+        quiz_questions.append(new_q)
 
 
 
